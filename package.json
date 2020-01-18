@@ -1,0 +1,16 @@
+{
+    "private": true,
+    "name": "app",
+    "version": "0.0.0",
+    "license": "MIT",
+    "scripts": {
+        "start": "preact watch",
+        "electron": "electron ."
+    },
+    "devDependencies": {
+        "electron": "^7.1.9"
+    },
+    "dependencies": {
+        "preact": "^10.0.1"
+    }
+}
