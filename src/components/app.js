@@ -1,11 +1,12 @@
 import { h, Fragment } from "preact";
 import { useState } from "preact/hooks";
 import { replaceInArray, repeatObject } from "../utility";
-import { Output } from "./output";
+import { TableDataEncoder } from "./table-data-encoder";
 import { PlayerNameInitializer } from "./player-name-initializer";
 import { Player } from "./player";
 import { TeamCountSelector } from "./team-count-selector";
 import { Team } from "./team";
+import { TableDataDecoder } from "./table-data-decoder";
 
 export const App = () => {
 	const [teams, setTeams] = useState(
@@ -13,7 +14,8 @@ export const App = () => {
 			(index) => ({
 				name: (!teams || teams.length === 1)
 					? "FFA - Free for All"
-					: (index + 1).toString()
+					: (index + 1).toString(),
+				color: null
 			}),
 			1
 		)
@@ -30,11 +32,11 @@ export const App = () => {
 		)
 	);
 
-	const setTeamName = (index) => (newName) => setTeams(
+	const setTeamProperty = (index, property) => (value) => setTeams(
 		replaceInArray(
 			teams,
 			index,
-			{ name: newName }
+			{ ...teams[index], [property]: value }
 		)
 	);
 
@@ -48,7 +50,8 @@ export const App = () => {
 				(index) => ({
 					name: (teamCount === 1)
 						? "FFA - Free for All"
-						: (index + startIndex + 1).toString()
+						: (index + startIndex + 1).toString(),
+					color: null
 				}),
 				Math.max(0, teamCount - teams.length)
 			)
@@ -94,14 +97,28 @@ export const App = () => {
 
 	return (
 		<Fragment>
-			<div>
-				<Output teams={teams} players={players} tabIndex={0} />
+			<div
+				style={{
+					display: "flex",
+					"justify-content": "space-between"
+				}}
+			>
+				<TableDataEncoder
+					teams={teams}
+					players={players}
+					tabIndex={0}
+				/>
+				<TableDataDecoder
+					setTeams={setTeams}
+					setPlayers={setPlayers}
+					tabIndex={1}
+				/>
 			</div>
-			<div>
+			<div style={{ "margin-top": "0.5rem" }}>
 				<TeamCountSelector
 					teamCount={teams.length}
 					setTeamCount={setTeamCount}
-					tabIndex={1}
+					tabIndex={2}
 				/>
 				<PlayerNameInitializer
 					setPlayerNames={
@@ -115,10 +132,8 @@ export const App = () => {
 								)
 							)
 					}
-					tabIndexOffset={2}
-					style={{
-						"margin-left": "0.5rem"
-					}}
+					tabIndex={3}
+					style={{ "margin-left": "0.5rem" }}
 				/>
 			</div>
 			{
@@ -137,12 +152,7 @@ export const App = () => {
 						>
 							<Player
 								name={player.name}
-								setName={
-									setPlayerProperty(
-										playerIndex,
-										"name"
-									)
-								}
+								setName={setPlayerProperty(playerIndex, "name")}
 								description={player.description}
 								setDescription={
 									setPlayerProperty(
@@ -156,24 +166,24 @@ export const App = () => {
 								playerCount={players.length}
 								teamIndex={teamIndex}
 								teamCount={teams.length}
-								tabIndexOffset={3}
+								tabIndexOffset={5}
 							/>
 						</div>
 					);
 
 					if (playerIndex % playersPerTeam === 0) {
 						return (
-							<div
-								style={{
-									"margin-top": "0.5rem"
-								}}
-							>
+							<div style={{ "margin-top": "0.5rem" }}>
 								<Team
 									name={teams[teamIndex].name}
-									setName={setTeamName(teamIndex)}
-									tabIndex={3
-										+ ((2 * playersPerTeam + 1)
-											* teamIndex)}
+									setName={setTeamProperty(teamIndex, "name")}
+									color={teams[teamIndex].color}
+									setColor={
+										setTeamProperty(teamIndex, "color")
+									}
+									tabIndex={
+										4 + (teamIndex * (playersPerTeam + 1))
+									}
 								/>
 								{component}
 							</div>

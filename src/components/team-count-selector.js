@@ -11,6 +11,9 @@ export const TeamCountSelector = ({
                 setTeamCount(value);
             }}
             tabIndex={tabIndex}
+            style={{
+                "font-size": "12px"
+            }}
         >
             <option value={1}>
                 FFA

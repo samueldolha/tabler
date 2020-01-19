@@ -17,7 +17,11 @@ export const Input = ({
             }
             maxLength={maxLength}
             tabIndex={tabIndex}
-            style={{ ...style, width: `${maxLength * 0.7875}rem` }}
+            style={{
+                ...style,
+                "font-size": "12px",
+                width: `${maxLength * 0.7875}rem`
+            }}
         >
         </input>
     );

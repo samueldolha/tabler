@@ -19,82 +19,30 @@ export const Player = ({
             <Input
                 value={name}
                 setValue={setName}
-                tabIndex={(2 * playerIndex)
-                    + teamIndex
-                    + tabIndexOffset
-                    + 1}
+                tabIndex={tabIndexOffset + playerIndex + teamIndex}
             />
             <Input
                 value={description}
                 setValue={setDescription}
-                tabIndex={(2 * playerIndex)
-                    + teamIndex
-                    + tabIndexOffset
-                    + 2}
-                style={{
-                    "margin-left": "0.5rem"
-                }}
+                tabIndex={tabIndexOffset + playerIndex + teamIndex}
+                style={{ "margin-left": "0.5rem" }}
             />
-            <Input
-                value={scores[0]}
-                setValue={setScore(0)}
-                maxLength={2}
-                tabIndex={playerIndex
-                    + (2 * playerCount)
-                    + tabIndexOffset
-                    + teamCount}
-                style={{
-                    "margin-left": "0.5rem"
-                }}
-            />
-            <Input
-                value={scores[1]}
-                setValue={setScore(1)}
-                maxLength={2}
-                tabIndex={playerIndex
-                    + (3 * playerCount)
-                    + tabIndexOffset
-                    + teamCount}
-                style={{
-                    "margin-left": "0.5rem"
-                }}
-            />
-            <Input
-                value={scores[2]}
-                setValue={setScore(2)}
-                maxLength={2}
-                tabIndex={playerIndex
-                    + (4 * playerCount)
-                    + tabIndexOffset
-                    + teamCount}
-                style={{
-                    "margin-left": "0.5rem"
-                }}
-            />
-            <Input
-                value={scores[3]}
-                setValue={setScore(3)}
-                maxLength={2}
-                tabIndex={playerIndex
-                    + (5 * playerCount)
-                    + tabIndexOffset
-                    + teamCount}
-                style={{
-                    "margin-left": "0.5rem"
-                }}
-            />
-            <Input
-                value={scores[4]}
-                setValue={setScore(4)}
-                maxLength={2}
-                tabIndex={playerIndex
-                    + (6 * playerCount)
-                    + tabIndexOffset
-                    + teamCount}
-                style={{
-                    "margin-left": "0.5rem"
-                }}
-            />
+            {
+                scores.map((score, scoreIndex) => (
+                    <Input
+                        value={score}
+                        setValue={setScore(scoreIndex)}
+                        maxLength={2}
+                        tabIndex={
+                            tabIndexOffset
+                            + teamCount
+                            + ((scoreIndex + 1) * playerCount)
+                            + playerIndex
+                        }
+                        style={{ "margin-left": "0.5rem" }}
+                    />
+                ))
+            }
         </Fragment>
     );
 }
