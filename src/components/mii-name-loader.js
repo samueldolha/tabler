@@ -14,7 +14,6 @@ export const MiiNameLoader = ({ tabIndex, style }) => {
             rootElement.innerHTML = response.data.replace(
                 /\/images\/[^"]+/g, ""
             );
-            console.log(rootElement.innerHTML);
             setMiiNames(
                 Array.from(rootElement.querySelectorAll("span.mii-font"))
                     .map((element) => element.innerHTML)
