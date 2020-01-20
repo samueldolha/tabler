@@ -1,6 +1,7 @@
 import { get } from "axios";
 import { h } from "preact";
 import { useState } from "preact/hooks";
+import "../assets/mii-font.css";
 import { Input } from "./input";
 
 export const MiiNameLoader = ({ tabIndex, style }) => {
@@ -48,6 +49,7 @@ export const MiiNameLoader = ({ tabIndex, style }) => {
                             "border-left-style": index > 0 ? "solid" : "unset",
                             "border-left-width": index > 0 ? "1px" : "unset",
                             "flex-grow": "1",
+                            "font-family": "MiiFont",
                             "font-size": "10px",
                             "justify-content": "center"
                         }}

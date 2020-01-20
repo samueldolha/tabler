@@ -1,5 +1,6 @@
 import { h, Fragment } from "preact";
 import { Input } from "./input";
+import "../assets/mii-font.css";
 
 export const Player = ({
     name,
@@ -25,7 +26,7 @@ export const Player = ({
                 value={description}
                 setValue={setDescription}
                 tabIndex={tabIndexOffset + playerIndex + teamIndex}
-                style={{ "margin-left": "0.5rem" }}
+                style={{ "font-family": "MiiFont", "margin-left": "0.5rem" }}
             />
             {
                 scores.map((score, scoreIndex) => (
