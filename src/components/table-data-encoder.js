@@ -21,7 +21,6 @@ const convertRgbToHex = (rgb) => convertRgbValueToHex(rgb.red)
 
 export const TableDataEncoder = ({ teams, players, tabIndex }) => {
     const parseHexCode = (teamIndex) => {
-        console.log(teamIndex, teams[teamIndex].color);
         if (teams[teamIndex].color !== null
             && teams[teamIndex].color.red !== null
             && teams[teamIndex].color.green !== null
