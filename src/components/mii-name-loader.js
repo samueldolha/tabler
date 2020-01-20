@@ -23,7 +23,10 @@ export const MiiNameLoader = ({ tabIndex, style }) => {
 
     return (
         <div
-            style={{ ...style, display: "flex", "justify-content": "space-between" }}
+            style={{
+                ...style,
+                display: "flex", "justify-content": "space-between"
+            }}
         >
             <Input
                 value={roomId}
