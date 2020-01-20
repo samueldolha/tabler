@@ -22,7 +22,7 @@ export const Input = ({
             style={{
                 ...style,
                 "font-size": "12px",
-                width: `${maxLength * 0.7875}rem`
+                width: `${maxLength * 0.41}rem`
             }}
         >
         </input>
