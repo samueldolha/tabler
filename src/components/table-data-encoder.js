@@ -62,11 +62,11 @@ export const TableDataEncoder = ({ teams, players, tabIndex }) => {
     return (
         <div style={{ display: "flex", "flex-direction": "column" }}>
             <textarea
-                cols={45}
+                cols={52}
                 rows={18}
                 readonly={true}
                 tabIndex={tabIndex}
-                style={{ resize: "none" }}
+                style={{ "font-size": "11.5px", resize: "none" }}
             >
                 {encodedTableData}
             </textarea>

@@ -80,12 +80,12 @@ export const TableDataDecoder = ({ setTeams, setPlayers, tabIndex }) => {
     return (
         <div style={{ display: "flex", "flex-direction": "column" }}>
             <textarea
-                cols={45}
+                cols={52}
                 rows={18}
                 value={value}
                 onInput={onInput}
                 tabIndex={tabIndex}
-                style={{ float: "right", resize: "none" }}
+                style={{ "font-size": "11.5px", float: "right", resize: "none" }}
             >
             </textarea>
             <button
