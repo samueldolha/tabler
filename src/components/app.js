@@ -1,3 +1,4 @@
+import axios from "axios";
 import { h, Fragment } from "preact";
 import { useState } from "preact/hooks";
 import { replaceInArray, repeatObject } from "../utility";
@@ -7,6 +8,7 @@ import { Player } from "./player";
 import { TeamCountSelector } from "./team-count-selector";
 import { Team } from "./team";
 import { TableDataDecoder } from "./table-data-decoder";
+import { MiiNameLoader } from "./mii-name-loader";
 
 export const App = () => {
 	const [teams, setTeams] = useState(
@@ -136,6 +138,9 @@ export const App = () => {
 					style={{ "margin-left": "0.5rem" }}
 				/>
 			</div>
+			<div style={{ "margin-top": "0.5rem" }}>
+				<MiiNameLoader tabIndex={4} />
+			</div>
 			{
 				players.map((player, playerIndex) => {
 					const playersPerTeam = players.length / teams.length;
@@ -166,7 +171,7 @@ export const App = () => {
 								playerCount={players.length}
 								teamIndex={teamIndex}
 								teamCount={teams.length}
-								tabIndexOffset={5}
+								tabIndexOffset={6}
 							/>
 						</div>
 					);
@@ -182,7 +187,7 @@ export const App = () => {
 										setTeamProperty(teamIndex, "color")
 									}
 									tabIndex={
-										4 + (teamIndex * (playersPerTeam + 1))
+										5 + (teamIndex * (playersPerTeam + 1))
 									}
 								/>
 								{component}

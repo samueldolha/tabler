@@ -3,6 +3,7 @@ import { h } from "preact";
 export const Input = ({
     value,
     setValue,
+    readonly,
     maxLength,
     tabIndex,
     style
@@ -15,6 +16,7 @@ export const Input = ({
                     setValue(event.target.value);
                 }
             }
+            readonly={readonly}
             maxLength={maxLength}
             tabIndex={tabIndex}
             style={{
