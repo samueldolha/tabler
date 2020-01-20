@@ -42,6 +42,11 @@ export const MiiNameLoader = ({ tabIndex, style }) => {
             {
                 miiNames.map((miiName, index) => (
                     <span
+                        onClick={
+                            () => {
+                                navigator.clipboard.writeText(miiName);
+                            }
+                        }
                         style={{
                             "align-items": "center",
                             "display": "flex",

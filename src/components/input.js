@@ -3,6 +3,7 @@ import { h } from "preact";
 export const Input = ({
     value,
     setValue,
+    onClick,
     readonly,
     maxLength,
     tabIndex,
@@ -11,6 +12,7 @@ export const Input = ({
         <input
             type="text"
             value={value || ""}
+            onClick={onClick}
             onInput={
                 (event) => {
                     setValue(event.target.value);

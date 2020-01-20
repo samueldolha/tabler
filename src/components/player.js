@@ -25,6 +25,16 @@ export const Player = ({
             <Input
                 value={description}
                 setValue={setDescription}
+                onClick={() => {
+                    navigator.clipboard.readText().then((value) => {
+                        console.log(value);
+                        if (
+                            typeof value === "string"
+                            && value.length > 0) {
+                            setDescription(value);
+                        }
+                    });
+                }}
                 tabIndex={tabIndexOffset + playerIndex + teamIndex}
                 style={{ "font-family": "MiiFont", "margin-left": "0.5rem" }}
             />
