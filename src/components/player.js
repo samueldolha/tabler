@@ -27,10 +27,7 @@ export const Player = ({
                 setValue={setDescription}
                 onClick={() => {
                     navigator.clipboard.readText().then((value) => {
-                        console.log(value);
-                        if (
-                            typeof value === "string"
-                            && value.length > 0) {
+                        if (typeof value === "string" && value.length > 0) {
                             setDescription(value);
                         }
                     });
