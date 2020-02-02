@@ -14,11 +14,18 @@ app.on(
         }).loadURL("http://127.0.0.1:8080");
         new BrowserWindow({
             width: 800,
-            height: 900,
+            height: 450,
             x: 800,
             y: 0,
             frame: false
         }).loadURL("https://gb.hlorenzi.com/table");
+        new BrowserWindow({
+            width: 800,
+            height: 450,
+            x: 800,
+            y: 450,
+            frame: false
+        }).loadURL("https://www.rapidtables.com/tools/notepad.html");
     }
 );
 
