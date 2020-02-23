@@ -11,7 +11,7 @@ export const Input = ({
 }) => (
         <input
             type="text"
-            value={value || ""}
+            value={(value || value === 0) ? value : ""}
             onClick={onClick}
             onInput={
                 (event) => {
