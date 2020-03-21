@@ -43,7 +43,9 @@ export const TableDataEncoder = ({ teams, players, tabIndex }) => {
         ) => {
             const playerLine = name
                 + " "
-                + scores.map((score) => score || "").join("|");
+                + scores
+                    .map((score) => Number.isInteger(score) ? score : "")
+                    .join("|");
             const playersPerTeam = players.length / teams.length;
             const teamIndex = index / playersPerTeam;
 
