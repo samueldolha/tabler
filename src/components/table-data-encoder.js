@@ -36,6 +36,14 @@ export const TableDataEncoder = ({ teams, players, tabIndex }) => {
             teamIndex * (hexCodes.length / teams.length))];
     }
 
+    let scoreCount = players[0].scores.length;
+
+    for (let index = 0; index < players[0].scores.length; index += 1) {
+        if (players.every((player) => player.scores[index] === 0)) {
+            scoreCount -= 1;
+        }
+    }
+
     const encodedTableData = players.map(
         (
             { name, scores },
@@ -44,6 +52,7 @@ export const TableDataEncoder = ({ teams, players, tabIndex }) => {
             const playerLine = name
                 + " "
                 + scores
+                    .filter((_, index) => index < scoreCount)
                     .map((score) => Number.isInteger(score) ? score : "")
                     .join("|");
             const playersPerTeam = players.length / teams.length;
