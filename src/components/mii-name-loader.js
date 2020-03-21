@@ -9,7 +9,7 @@ export const MiiNameLoader = ({ tabIndex, style }) => {
     const [miiNames, setMiiNames] = useState([]);
 
     const loadMiiNames = () => {
-        get(`https://wiimmfi.de/mkw/room/${roomId}`).then((response) => {
+        get('https://wiimmfi.de/stats/mkw/room/p600531545').then((response) => {
             window.stop();
             const rootElement = document.createElement("html");
             rootElement.innerHTML = response.data.replace(
@@ -66,7 +66,7 @@ export const MiiNameLoader = ({ tabIndex, style }) => {
             }
             <button
                 type="button"
-                disabled={!(/r[0-9]{7}/).test(roomId)}
+                // disabled={!(/r[0-9]{7}/).test(roomId)}
                 onClick={loadMiiNames}
                 tabIndex={tabIndex}
             >
